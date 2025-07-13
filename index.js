@@ -23,8 +23,6 @@ if (!MNEMONIC) {
 // Create account from mnemonic
 const account = mnemonicToAccount(MNEMONIC);
 
-console.log('Main account private key:', Buffer.from(account.getHdKey().privateKey).toString('hex'));
-
 // Create viem wallet client
 const walletClient = createWalletClient({
     account,
@@ -128,7 +126,6 @@ app.post('/invoice', async (req, res) => {
     const serializedAuthorization = JSON.stringify(authorization, (key, value) =>
         typeof value === 'bigint' ? value.toString() : value
     );
-    console.log('Authorization:', serializedAuthorization);
 
     // Set expiration time (15 minutes from now) as SQLite-compatible string
     const expiration = new Date(Date.now() + 15 * 60 * 1000).getTime();
@@ -324,11 +321,8 @@ setInterval(() => {
                         const maxFeePerGas = feeEstimates.maxFeePerGas;
                         const maxPriorityFeePerGas = feeEstimates.maxPriorityFeePerGas;
                         const gasPrice = feeEstimates.gasPrice;
-                        console.log(`Gas Estimate: ${gasEstimate}, MaxFeePerGas: ${maxFeePerGas}, MaxPriorityFeePerGas: ${maxPriorityFeePerGas}, GasPrice: ${gasPrice}`);
 
                         const totalFee = BigInt(gasEstimate) * (maxFeePerGas || gasPrice) + BigInt(gasEstimate) * (maxPriorityFeePerGas || 0n);
-                        console.log(`Total Estimated Fee: ${totalFee} wei`);
-                        console.log(`Amount to Sweep: ${row.amount} wei`);
                         const amountMinusFee = BigInt(row.amount) - totalFee;
                         
                         // Ensure amountMinusFee is positive
