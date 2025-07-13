@@ -1,15 +1,15 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f9;
+    background: #f4f7f9;
     color: #333;
     margin: 0;
     padding: 20px;
 }
 
 .container {
-    width: 100%;
     max-width: 1300px;
     margin: 0 auto;
+    width: 100%;
 }
 
 header {
@@ -21,17 +21,16 @@ header {
 .card {
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     padding: 25px;
     margin-bottom: 25px;
 }
 
 h2 {
-    margin-top: 0;
+    margin: 0 0 20px 0;
     color: #34495e;
     border-bottom: 2px solid #ecf0f1;
     padding-bottom: 10px;
-    margin-bottom: 20px;
 }
 
 .form-group {
@@ -53,18 +52,18 @@ input, select, textarea {
 }
 
 button {
-    background-color: #3498db;
-    color: white;
+    background: #3498db;
+    color: #fff;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
+    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background: #2980b9;
 }
 
 table {
@@ -76,6 +75,10 @@ th, td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #f2f2f2;
 }
 
 .filter-bar {
@@ -100,14 +103,10 @@ th, td {
     border-radius: 4px;
     border: 1px solid #ccc;
     background: #f8f8f8;
-    font-size: 15px;
+    font-size: 14px;
     margin-right: 10px;
     width: 120px;
-    font-size: 14px;
     text-align: left;
-}
-th {
-    background-color: #f2f2f2;
 }
 
 .status-paid {
@@ -126,22 +125,21 @@ th {
 }
 
 .view-btn {
-    background-color: #1abc9c;
-    color: white;
+    background: #1abc9c;
+    color: #fff;
     padding: 6px 12px;
     border-radius: 4px;
     text-decoration: none;
 }
 
 .cancel-btn {
-    background-color: #e74c3c;
-    color: white;
+    background: #e74c3c;
+    color: #fff;
     padding: 6px 12px;
     border-radius: 4px;
     text-decoration: none;
 }
 
-/* Helper class to hide elements */
 .hidden {
     display: none !important;
 }
@@ -151,22 +149,19 @@ th {
     margin-bottom: 15px;
 }
 
-
 /* Modal Styles */
 .modal {
     display: none;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.5);
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background: #fefefe;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -206,15 +201,10 @@ th {
     word-break: break-all;
 }
 
-/* Add this to your style.css */
 .amount-wrapper {
     display: flex;
     align-items: center;
 }
-
-/* .amount-wrapper input[type="number"] {
-    flex-grow: 1;
-} */
 
 .checkbox-wrapper {
     display: flex;
@@ -228,17 +218,77 @@ th {
     margin-right: 5px;
 }
 
-/* Add this to your style.css file */
-
 .toolbar {
     margin-bottom: 25px;
     text-align: right;
 }
 
 .toolbar button {
-    background-color: #27ae60;
+    background: #27ae60;
 }
 
 .toolbar button:hover {
-    background-color: #229954;
+    background: #229954;
+}
+#balances-table th, #balances-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#balances-table th {
+    background: #eaf6fb;
+    color: #2980b9;
+    font-weight: 600;
+    border-bottom: 2px solid #d6eaf8;
+}
+
+#balances-table td {
+    background: #fff;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#balance-treasury-btc, #balance-treasury-usdt {
+    color: #34495e;
+    font-weight: bold;
+}
+
+#balance-unswept-btc, #balance-unswept-usdt {
+    color: #e67e22;
+    font-weight: bold;
+    background: #fcf3e3;
+    border-radius: 4px;
+}
+
+#balance-total-btc, #balance-total-usdt {
+    color: #16a085;
+    font-weight: bold;
+    background: #e8f8f5;
+    border-radius: 4px;
+}
+
+#balance-pending-btc, #balance-pending-usdt {
+    color: #c0392b;
+    font-weight: bold;
+    background: #fdecea;
+    border-radius: 4px;
+}
+
+#balances-card {
+    margin-top: 40px;
+}
+
+#balances-card h2 {
+    font-size: 24px;
+    color: #2980b9;
+}
+
+#balances-table td:first-child {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+#balances-table tr:hover td {
+    background: #f6fbfd;
+    transition: background 0.2s;
 }

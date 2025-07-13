@@ -12,15 +12,43 @@
 <body>
     <div class="container">
         <header>
-            <h1>Citrea Pay Merchant</h1>
+            <h1>Citrea Pay</h1>
         </header>
-
         <main>
             <div class="toolbar">
                 <button id="open-create-invoice-modal-btn">Create New Invoice</button>
             </div>
-
-            <div class="card">
+            <section class="card" id="balances-card">
+                <h2>Balances</h2>
+                <table id="balances-table">
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th>Treasury Balance</th>
+                            <th>Unswept Balance</th>
+                            <th>Total Balance</th>
+                            <th>Pending Payments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="balance-asset-btc">BTC</td>
+                            <td id="balance-treasury-btc"></td>
+                            <td id="balance-unswept-btc"></td>
+                            <td id="balance-total-btc"></td>
+                            <td id="balance-pending-btc"></td>
+                        </tr>
+                        <tr>
+                            <td id="balance-asset-usdt">USDT</td>
+                            <td id="balance-treasury-usdt"></td>
+                            <td id="balance-unswept-usdt"></td>
+                            <td id="balance-total-usdt"></td>
+                            <td id="balance-pending-usdt"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="card">
                 <h2>Invoices</h2>
                 <div class="filter-bar">
                     <label for="status-filter">Status:</label>
@@ -51,12 +79,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Populated by app.js -->
                     </tbody>
                 </table>
-            </div>
+            </section>
         </main>
     </div>
-
+    <!-- Create Invoice Modal -->
     <div id="create-invoice-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -69,7 +98,6 @@
                         <option value="USDT">USDT</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="amount">Amount</label>
                     <div class="amount-wrapper">
@@ -80,7 +108,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="description">Description (Optional)</label>
                     <textarea id="description" rows="3"></textarea>
@@ -90,17 +117,14 @@
             </form>
         </div>
     </div>
-
-
+    <!-- Invoice Details Modal -->
     <div id="invoice-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Invoice Details</h2>
-            <div id="modal-body" class="modal-body">
-            </div>
+            <div id="modal-body" class="modal-body"></div>
         </div>
     </div>
-
     <script src="app.js"></script>
 </body>
 
