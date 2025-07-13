@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citrea Pay - Merchant Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Citrea Pay Merchant</h1>
+        </header>
+
+        <main>
+            <div class="toolbar">
+                <button id="open-create-invoice-modal-btn">Create New Invoice</button>
+            </div>
+
+            <div class="card">
+                <h2>Invoices</h2>
+                <div class="filter-bar">
+                    <label for="status-filter">Status:</label>
+                    <select id="status-filter">
+                        <option value="">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="paid">Paid</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                    <label for="asset-filter">Asset:</label>
+                    <select id="asset-filter">
+                        <option value="">All</option>
+                        <option value="BTC">BTC</option>
+                        <option value="USDT">USDT</option>
+                    </select>
+                </div>
+                <table id="invoices-table">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Amount</th>
+                            <th>Asset</th>
+                            <th>Status</th>
+                            <th>Timestamp</th>
+                            <th>Expires At</th>
+                            <th>Details</th>
+                            <th>Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="create-invoice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Create Invoice</h2>
+            <form id="create-invoice-form">
+                <div class="form-group">
+                    <label for="asset">Asset</label>
+                    <select id="asset">
+                        <option value="BTC">BTC</option>
+                        <option value="USDT">USDT</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <div class="amount-wrapper">
+                        <input type="number" id="amount" placeholder="Enter amount in BTC" step="any" required>
+                        <div id="usd-checkbox-wrapper" class="checkbox-wrapper">
+                            <input type="checkbox" id="is-usd">
+                            <label for="is-usd">in USD</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description (Optional)</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+                <p id="error-message" class="error-text"></p>
+                <button type="submit">Create Invoice</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="invoice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Invoice Details</h2>
+            <div id="modal-body" class="modal-body">
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

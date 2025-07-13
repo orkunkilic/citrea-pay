@@ -1,0 +1,244 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    margin-top: 0;
+    color: #34495e;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.filter-bar label {
+    font-weight: 500;
+    margin-right: 8px;
+    color: #34495e;
+}
+
+.filter-bar select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    font-size: 15px;
+    margin-right: 10px;
+    width: 120px;
+    font-size: 14px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+.status-paid {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.status-unpaid {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.status-expired {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.view-btn {
+    background-color: #1abc9c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Helper class to hide elements */
+.hidden {
+    display: none !important;
+}
+
+.error-text {
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-body #qr-code {
+    margin: 20px auto;
+}
+
+#qr-code img {
+    margin: 0 auto;
+}
+
+#copy-address-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.modal-body code {
+    background: #eee;
+    padding: 3px 6px;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+/* Add this to your style.css */
+.amount-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* .amount-wrapper input[type="number"] {
+    flex-grow: 1;
+} */
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Add this to your style.css file */
+
+.toolbar {
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+.toolbar button {
+    background-color: #27ae60;
+}
+
+.toolbar button:hover {
+    background-color: #229954;
+}

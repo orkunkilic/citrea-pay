@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --background-color: #f4f7f9;
+            --container-bg: #ffffff;
+            --text-color: #2c3e50;
+            --muted-text-color: #7f8c8d;
+            --border-color: #ecf0f1;
+            --success-color: #27ae60;
+            --pending-color: #f39c12;
+            --error-color: #e74c3c;
+            --expired-color: #95a5a6;
+            --primary-action-color: #3498db;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--background-color);
+            margin: 0;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--container-bg);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .container.loading #invoice-body {
+            display: none;
+        }
+
+        .loader {
+            display: none;
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--border-color);
+            border-bottom-color: var(--primary-action-color);
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+            margin: 40px auto;
+        }
+
+        .container.loading .loader {
+            display: block;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--text-color);
+        }
+
+        /* --- Tab Styles --- */
+        .tab-switcher {
+            display: flex;
+            background: var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 4px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--muted-text-color);
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--container-bg);
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-panel {
+            display: none;
+            /* Hidden by default */
+        }
+
+        .tab-panel.active {
+            display: block;
+            /* Shown when active */
+        }
+
+        .qr-container img {
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+        }
+
+        .amount-display {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 16px 0;
+        }
+
+        .amount-display span {
+            font-weight: 300;
+            font-size: 0.7em;
+            margin-left: 5px;
+        }
+
+        .address-line {
+            padding: 12px;
+            background: var(--border-color);
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+
+        .address-line code {
+            word-break: break-all;
+            color: var(--text-color);
+        }
+
+        .status {
+            font-weight: 500;
+            padding: 12px;
+            border-radius: var(--border-radius);
+            margin-top: 24px;
+        }
+
+        .status.paid {
+            background-color: #e9f7ef;
+            color: var(--success-color);
+        }
+
+        .status.pending {
+            background-color: #fef9e7;
+            color: var(--pending-color);
+        }
+
+        .status.error {
+            background-color: #fdedec;
+            color: var(--error-color);
+        }
+
+        .status.expired {
+            background-color: #f4f6f7;
+            color: var(--expired-color);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div id="payment-container" class="container loading">
+        <h2>Scan to Pay</h2>
+        <div class="loader"></div>
+        <div id="invoice-body">
+
+            <div class="tab-switcher">
+                <button id="invoice-tab-btn" class="tab-btn active">Invoice</button>
+                <button id="address-tab-btn" class="tab-btn">Address</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="invoice-content" class="tab-panel active">
+                    <div id="invoice-qr-container" class="qr-container"></div>
+                </div>
+                <div id="address-content" class="tab-panel">
+                    <div id="address-qr-container" class="qr-container"></div>
+                </div>
+            </div>
+            <div id="amount-display" class="amount-display"></div>
+
+            <div class="address-line">
+                <code id="receiving-address"></code>
+            </div>
+            <div id="payment-status" class="status"></div>
+        </div>
+    </div>
+
+    <script src="pos.js"></script>
+</body>
+
+</html>
